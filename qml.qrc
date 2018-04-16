@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Page1Form.ui.qml</file>
+        <file>Page2Form.ui.qml</file>
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>Page3Form.ui.qml</file>
+        <file>WecomeForm.ui.qml</file>
+        <file>96Boards.png</file>
+        <file>arrow-left.png</file>
+        <file>arrow-right.png</file>
+        <file>MirrorForm.ui.qml</file>
+    </qresource>
+</RCC>
