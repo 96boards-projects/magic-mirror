@@ -6,8 +6,12 @@ ApplicationWindow {
 
     width: 1920
     height: 1080
-    title: qsTr("Tabs")
+    title: qsTr("Magic_Mirror")
     flags: Qt.FramelessWindowHint | Qt.Window
+
+    function change(){
+    tabBar.incrementCurrentIndex()
+}
 
     SwipeView {
         id: swipeView

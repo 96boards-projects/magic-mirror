@@ -6,7 +6,7 @@ Page {
     // Begin
         function getData() {
             var xmlhttp = new XMLHttpRequest();
-            var url = "http://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=<enter api key>";
+            var url = "http://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=abec9e19c6d34f469a4c58302717fa9f";
 
             xmlhttp.onreadystatechange=function() {
                 if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {

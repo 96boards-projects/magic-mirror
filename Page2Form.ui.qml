@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+//import QtCharts 2.0
 
 Page {
     id: page
@@ -24,7 +25,7 @@ Page {
 // Begin
     function getData() {
         var xmlhttp = new XMLHttpRequest();
-        var url = "http://api.openweathermap.org/data/2.5/weather?id=1261481&units=metric&appid=<enter api key>";
+        var url = "http://api.openweathermap.org/data/2.5/weather?id=1261481&units=metric&appid=c50f006f31e3e3facbc1a191120b4fb3";
 
         xmlhttp.onreadystatechange=function() {
             if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
