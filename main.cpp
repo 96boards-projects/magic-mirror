@@ -20,7 +20,7 @@
 
 #include "flick.h"
 
-#define GPIO_PIN_1 34
+#define GPIO_PIN_PIR 32
 
 
 void onGestureCb(FlickGesture_t gesture, FlickGestureClass_t gestClass, bool isEdgeFlick, bool inProgress){
@@ -41,7 +41,7 @@ void onGestureCb(FlickGesture_t gesture, FlickGestureClass_t gestClass, bool isE
         g = "NO_GESTURE";
     }
 
-    qInfo << "Gesture: %s, class: %s, edge flick: %s, in progress: %s \n", g, cl, isEdgeFlick?"yes":"no", inProgress?"yes":"no";
+    qInfo() << "Gesture: %s, class: %s, edge flick: %s, in progress: %s \n", g, cl, isEdgeFlick?"yes":"no", inProgress?"yes":"no";
 }
 
 void *blinky(void *rec)
@@ -68,6 +68,46 @@ void *blinky(void *rec)
         return 0;
 }
 
+void *pir(void *rec)
+{
+    mraa::Result status;
+    int screen_status=1;
+
+    //! [Interesting]
+    /* initialize GPIO */
+    mraa::Gpio gpio(GPIO_PIN_PIR);
+
+    /* set GPIO to input */
+    status = gpio.dir(mraa::DIR_IN);
+    if (status != mraa::SUCCESS) {
+        printError(status);
+        //return 1;
+    }
+    while(1)
+    {
+    if (screen_status==1)
+    {
+        sleep(15);
+        if(gpio.read()==0)
+        {
+            screen_status = 0;
+            system("xset dpms force off");
+        }
+    }
+    else
+    {
+        sleep(0.1);
+        if(gpio.read()==1)
+        {
+            screen_status = 1;
+            system("xset dpms force on");
+        }
+    }
+
+    }
+    return EXIT_SUCCESS;
+}
+
 int main(int argc, char *argv[])
 {
     qInfo() << "run";
@@ -81,6 +121,7 @@ int main(int argc, char *argv[])
     pthread_t threads[2];
     int rc;
     pthread_create(&threads[0], NULL, blinky, (void *)rc);
+    pthread_create(&threads[1], NULL, pir, (void *)rc);
     if (rc)
     {
         qInfo() << rc;
