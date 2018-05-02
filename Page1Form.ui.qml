@@ -128,7 +128,7 @@ Page {
                                     color: styleData.selected ? "black" : (styleData.visibleMonth && styleData.valid ? "white" : "grey");
                                     font.bold: true
                                     font.pointSize: 25
-                                    font.family: "Cantarell"                                 
+                                    font.family: "Cantarell"
                                 }
 
 
