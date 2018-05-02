@@ -1,9 +1,10 @@
-# Carbon Rover
+# Magic Mirror
 
 # Table of Contents
 
 - [1) Hardware](#1-hardware)
-   - [1.1) Hardware requirements](#11-hardware-requirements)
+   - [1.1) Hardware Requirements](#11-hardware-requirements)
+   - [1.2) Hardware Setup](#12-hardware-setup)
 - [2) Software](#2-software)
    - [2.1) Build Environment Setup](#21-build-environment-setup)
    - [2.2) API-Keys](#22-api-keys)
@@ -18,9 +19,35 @@
 - [Dragonboard-410c](https://www.96boards.org/product/dragonboard410c/)
 - Compatible HDMI Monitor
 
+## 1.2) Hardware Setup
+
+Both the Flick 3D and PIR Sensor are connected via a 3.3v level shifter, these can be easily found in either the [Audio Mezzanine](https://www.96boards.org/product/audio-mezzanine/) or the [Sensor Mezzanine](https://www.96boards.org/product/sensors-mezzanine/).
+
+- **Flick 3D Gesture Sensor**
+
+| Flick 3D | 96Boards 3.3v |
+|:--------:|:-------------:|
+| VCC      | 3.3v          |
+| GND      | GND           |
+| SDA      | I2C1_SDA      |
+| SCL      | I2C1_SCL      |
+| TS       | GPIO K        |
+| RST      | GPIO L        |
+
+- **PIR Sensor**
+
+| Flick 3D | 96Boards 3.3v |
+|:--------:|:-------------:|
+| VCC      | 3.3v          |
+| GND      | GND           |
+| SIG      | GPIO J        |
+
+
 # 2) Software
 
 ## 2.1) Build Environment Setup
+
+> Note due to the use of mraa, it is recommended to either run everything with ```sudo``` or login as root
 
 ### Setup ZRAM Swap
 
@@ -68,8 +95,9 @@ Press the green play button or use Ctrl+R to run the application and you should 
 
 4) Change Log
 
+**Rev 1:**
+- UI Control with 3D Gesture sensor
+- Screen on/off using PIR
+
 **Rev 0.1:**
 - Finalized implementation of UI
-
-**TODO:**
-- Implement control using sensor with mraa, else fall back to touch
