@@ -55,10 +55,14 @@ Although the project itself doesn't consume much RAM, the Qt Creator IDE can be
 resource hungry so to be on the safe side its better to follow [this guide](https://www.96boards.org/documentation/consumer/guides/zram_swapspace.md.html)
 to prevent random lock-ups.
 
+### MRAA setup for Flick3D
+
+- Follow this [guide](https://github.com/96boards-projects/flick3d/blob/master/README.md).
+
 ### Install Qt5
 
 - Make sure your Dragonboard-410c is connected to the internet.
-- ```$ sudo apt install qt-creator libqt5* qt5*```
+- ```$ sudo apt install qt-creator libqt5* qt5* xdotool```
 
 ### Setting up project in Qt Creator
 

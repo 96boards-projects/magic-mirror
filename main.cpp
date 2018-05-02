@@ -21,6 +21,9 @@
 #include "flick.h"
 
 #define GPIO_PIN_PIR 32
+#define SCREEN_TIMEOUT 30
+#define FLICK_1 34
+#define FLICK_2 33
 
 
 void onGestureCb(FlickGesture_t gesture, FlickGestureClass_t gestClass, bool isEdgeFlick, bool inProgress){
@@ -53,7 +56,7 @@ void *blinky(void *rec)
     system("xdotool click 1");
     system("xdotool key Tab");
 
-    Flick flick(34, 33);
+    Flick flick(FLICK_1, FLICK_2);
 
         flick.gestureCallback = onGestureCb;
         usleep(250000);
@@ -87,7 +90,7 @@ void *pir(void *rec)
     {
     if (screen_status==1)
     {
-        sleep(15);
+        sleep(SCREEN_TIMEOUT);
         if(gpio.read()==0)
         {
             screen_status = 0;
